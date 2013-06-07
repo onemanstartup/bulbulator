@@ -34,6 +34,8 @@ $ ->
     selectedLink = ($ this)
     e.preventDefault()
     $.ajax {
+      beforeSend: ->
+        $('body').addClass("loading")
       type: "get"
       dataType: 'json'
       url: '/albums'
@@ -48,6 +50,7 @@ $ ->
         $("#albums").render($.parseJSON(res.responseText).albums, directives)
         imgLoad = imagesLoaded( $("#albums") )
         imgLoad.on('done', (instance) ->
+          $('body').removeClass("loading")
           $("#albums").css('opacity', '0').fadeTo(2500, 1,'swing')
         )
     }
