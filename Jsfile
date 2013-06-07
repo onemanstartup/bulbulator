@@ -1,0 +1,4 @@
+group :vendor do
+  js "jquery"
+  js "transparency"
+end
