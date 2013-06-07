@@ -1,4 +1,5 @@
 group :vendor do
   js "jquery"
   js "transparency"
+  js "imagesloaded"
 end

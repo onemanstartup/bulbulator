@@ -44,8 +44,12 @@ $ ->
               @src
           }
         }
-        $("#albums").render($.parseJSON(res.responseText).albums, directives)
         renderUser($.parseJSON(res.responseText).user)
+        $("#albums").render($.parseJSON(res.responseText).albums, directives)
+        imgLoad = imagesLoaded( $("#albums") )
+        imgLoad.on('done', (instance) ->
+          $("#albums").css('opacity', '0').fadeTo(2500, 1,'swing')
+        )
     }
     false
 
@@ -61,4 +65,7 @@ $ ->
       }
     }
     $("#user").render(data, directives)
+    $("#user").css('opacity', '0').fadeTo(1500, 1,'swing')
 
+  if document.cookie.replace(/(?:(?:^|.*;\s*)auth_token\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+    $("#albums_load_link").click()

@@ -15,7 +15,7 @@ json.albums do
   json.array! covers do |cover|
     json.aid cover['aid']
     json.title titles[cover['aid']]
-    json.src cover['src_small']
+    json.src cover['src_big']
   end
 end
 

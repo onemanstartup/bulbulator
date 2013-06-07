@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "jquery": "latest",
-    "transparency": "latest"
+    "transparency": "latest",
+    "imagesloaded": "latest"
   }
 }

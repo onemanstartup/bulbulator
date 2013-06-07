@@ -13,5 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 //= require transparency.min
+//= require eventEmitter
+//= require eventie
+//= require imagesloaded
+//= require_tree .
