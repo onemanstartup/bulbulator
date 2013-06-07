@@ -7,8 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= link_to "Ok, go", "http://oauth.vk.com/authorize?client_id=2274254&scope=1028&redirect_uri=http://albums.dev/handle_vk_req&display=popup&response_type=code", id: "vk_authorize_link" %>
+<%= link_to "Load Info", albums_path, id: "albums_load_link" %>
 
+<div id="user">
+  <h1 class="fullname"></h1>
+  <img src="" class="avatar">
+  <span class="activity"></span>
+</div>
 <%= yield %>
+<div class="modal"></div>
 
 </body>
 </html>

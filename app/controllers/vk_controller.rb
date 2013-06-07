@@ -16,6 +16,11 @@ class VkController < ApplicationController
   def albums
     @user = vk_user
   end
+  
+  def get_album
+    @user = vk_user
+    @aid = params[:aid]
+  end
 
   private
 
