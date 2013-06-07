@@ -3,6 +3,7 @@ Albums::Application.routes.draw do
   root 'vk#index'
   get 'authorize_vk' => 'vk#authorize_vk'
   get 'handle_vk_req' => 'vk#handle_vk_req'
+  get 'albums' => 'vk#albums'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
