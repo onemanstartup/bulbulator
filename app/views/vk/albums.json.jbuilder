@@ -19,4 +19,7 @@ json.albums do
   end
 end
 
-json.user  @user.getProfiles(uid: @user_id, fields: 'first_name, last_name, city, photo_medium')
+json.user do
+  json.(@user.getProfiles(uid: @user_id, fields: 'first_name, last_name, city, photo_medium')[0], 'first_name', 'last_name', 'photo_medium')
+  json.activity @user.vk_call('activity.get', {uid: @user_id})['activity']
+end
