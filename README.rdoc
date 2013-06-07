@@ -1,16 +1,20 @@
 * Ruby version  = 2.0
 
-
-Vk app uses domen - albums.dev
-before run run `rake bower:dsl:install`
-
-Used:
-js gallery - photoset-grid
-js lightbox - colorbox
-js templating - transparency
-js image loading - imagesloaded
-js dependecies - bower-rails
-
-turbolinks
-app js - coffeescript
-ruby api - vk-ruby
+* Requirements
+* 
+* node (on github)
+* bower (>= 0.9) installed with npm
+* 
+* Vk app uses domen - albums.dev
+* before run run `rake bower:dsl:install`
+* 
+* Used:
+* js gallery - photoset-grid
+* js lightbox - colorbox
+* js templating - transparency
+* js image loading - imagesloaded
+* js dependecies - bower-rails
+* 
+* turbolinks
+* app js - coffeescript
+* ruby api - vk-ruby
