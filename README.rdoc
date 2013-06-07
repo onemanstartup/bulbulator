@@ -1,5 +1,7 @@
 * Ruby version  = 2.0
 
+
+Vk app uses domen - albums.dev
 before run run `rake bower:dsl:install`
 
 Used:
