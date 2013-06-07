@@ -16,7 +16,7 @@ $ ->
       dataType: 'json'
       url: '/authorize_vk'
       complete: (res) ->
-        vk_user = $.parseJSON(res.responseText)
+        vk_user = res.responseText
     }
 
   waitForPopupClose_ = ->
@@ -29,3 +29,21 @@ $ ->
 
   isPopupClosed_ = ->
     !popupWindow_ or popupWindow_.closed
+
+  $("#albums_load_link").click (e) ->
+    selectedLink = ($ this)
+    e.preventDefault()
+    $.ajax {
+      type: "get"
+      dataType: 'json'
+      url: '/albums'
+      complete: (res) ->
+        directives = {
+          cover: {
+            src: ->
+              @src
+          }
+        }
+        $("#albums").render($.parseJSON(res.responseText).albums, directives)
+    }
+    false
