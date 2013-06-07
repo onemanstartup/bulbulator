@@ -1,5 +1,5 @@
+window.albumPageLoad = null
 $ ->
-  console.log("trigger ready")
   popupWindow_ = null
   interval_ = null
   vk_user = null
@@ -75,7 +75,7 @@ $ ->
     $("#user").render(data, directives)
     $("#user").css('opacity', '0').fadeTo(1500, 1,'swing')
 
-  if document.cookie.replace(/(?:(?:^|.*;\s*)auth_token\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+  if document.cookie.replace(/(?:(?:^|.*;\s*)auth_token\s*\=\s*([^;]*).*$)|^.*$/, "$1") && $("#albums").length > 0
     $("#albums_load_link").click()
   document.addEventListener("page:fetch", $('body').addClass("loading"))
   document.addEventListener("page:receive", $('body').removeClass("loading"))
@@ -83,3 +83,51 @@ $ ->
     aid = $(@).data("aid")
     Turbolinks.visit("/get_album?aid="+ aid)
   )
+  window.albumPageLoad = (aid) ->
+    $.ajax({
+      beforeSend: ->
+        $('body').addClass("loading")
+      ,
+      type: "get",
+      dataType: 'json',
+      url: '/get_album',
+      data: {
+        'aid': aid
+      },
+      complete: (res) ->
+        directives = {
+          preview: {
+            src: ->
+              @preview
+            ,
+            "data-highres": ->
+              @big
+          }
+        }
+        $("#photos").render($.parseJSON(res.responseText), directives)
+        $('body').removeClass("loading")
+        $('#photos').photosetGrid({
+          gutter: '5px',
+          width:'400px',
+          layout: '121',
+          highresLinks: true,
+          rel: 'album-gallery',
+          onComplete: ->
+            $('#photos').attr('style', '')
+            $.colorbox.clear()
+            $("#photos a").colorbox({
+              photo: true,
+              scalePhotos: true,
+              maxHeight:'90%',
+              maxWidth:'90%'
+            })
+
+            $("#photos").css('opacity', '0').fadeTo(2500, 1, 'swing')
+        })
+    })
+
+
+
+  if ($('#photos').length > 0)
+    console.log('photos')
+    albumPageLoad($('#photos').data("album"))

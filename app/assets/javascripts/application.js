@@ -11,10 +11,13 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require transparency.min
 //= require eventEmitter
 //= require eventie
 //= require imagesloaded
+//= require colorbox-modded
+//= require photoset-grid
 //= require_tree .

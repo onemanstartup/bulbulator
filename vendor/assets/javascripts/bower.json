@@ -1,7 +1,8 @@
 {
   "dependencies": {
-    "jquery": "latest",
     "transparency": "latest",
-    "imagesloaded": "latest"
+    "imagesloaded": "latest",
+    "photoset-grid": "latest",
+    "jquery.colorbox": "latest"
   }
 }

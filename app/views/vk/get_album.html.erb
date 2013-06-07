@@ -1,42 +1,4 @@
 
 <div id="photos" data-album='<%= @aid %>'>
-  <div class="photo" data-big="">
-    <img src="" class="preview">
-  </div>
+    <img src="" class="preview" data-highres="">
 </div>
-<script type="text/javascript">
-$.ajax({
-        beforeSend: function() {
-          return $('body').addClass("loading");
-        },
-        type: "get",
-        dataType: 'json',
-        url: '/get_album',
-        data: {
-          'aid': <%= @aid %>
-        },
-        complete: function(res) {
-          console.log("complete")
-          var directives, imgLoad;
-
-          directives = {
-            preview: {
-              src: function() {
-                return this.preview;
-              }
-            },
-            photo: {
-              "data-big": function() {
-                return this.big;
-              }
-            }
-          };
-          $("#photos").render($.parseJSON(res.responseText), directives);
-          imgLoad = imagesLoaded($("#photos"));
-          return imgLoad.on('done', function(instance) {
-            $('body').removeClass("loading");
-            return $("#photos").css('opacity', '0').fadeTo(2500, 1, 'swing');
-          });
-        }
-      });
-</script>

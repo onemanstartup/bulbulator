@@ -1,5 +1,6 @@
 group :vendor do
-  js "jquery"
   js "transparency"
   js "imagesloaded"
+  js "photoset-grid"
+  js "jquery.colorbox"
 end
