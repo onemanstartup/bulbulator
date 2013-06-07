@@ -82,30 +82,4 @@ $ ->
   $('body').delegate( ".album", 'click', ->
     aid = $(@).data("aid")
     Turbolinks.visit("/get_album?aid="+ aid)
-    $.ajax {
-      beforeSend: ->
-        $('body').addClass("loading")
-      type: "get"
-      dataType: 'json'
-      url: '/get_album'
-      data: {'aid': aid}
-      complete: (res) ->
-        directives = {
-          preview: {
-            src: ->
-              @preview
-          },
-          photo: {
-            "data-big": ->
-              @big
-          }
-        }
-        $("#photos").render($.parseJSON(res.responseText).photos, directives)
-        imgLoad = imagesLoaded( $("#photos") )
-        imgLoad.on('done', (instance) ->
-          $('body').removeClass("loading")
-          $("#photos").css('opacity', '0').fadeTo(2500, 1,'swing')
-        )
-    }
-
   )
