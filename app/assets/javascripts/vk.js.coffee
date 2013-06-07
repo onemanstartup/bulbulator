@@ -45,5 +45,20 @@ $ ->
           }
         }
         $("#albums").render($.parseJSON(res.responseText).albums, directives)
+        renderUser($.parseJSON(res.responseText).user)
     }
     false
+
+  renderUser = (data) ->
+    directives = {
+      avatar: {
+        src: ->
+          @photo_medium
+      },
+      fullname: {
+        text: ->
+          @first_name + " " + @last_name
+      }
+    }
+    $("#user").render(data, directives)
+
