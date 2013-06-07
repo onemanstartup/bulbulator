@@ -15,4 +15,7 @@
 /log/*.log
 /tmp
 
-/vendor/assets/components
+/vendor/assets/components/
+/vendor/assets/javascripts/components
+/vendor/assets/stylesheets/components
+
